@@ -3,7 +3,9 @@ import SignUpForm from './SignUpForm';
 
 const Signup = () => {
   return (
-    <main><SignUpForm/></main>
+    <main className="flex min-h-screen justify-center items-center w-full">
+      <SignUpForm/>
+    </main>
   )
 }
 
