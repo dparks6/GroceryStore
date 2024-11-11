@@ -1,4 +1,4 @@
-import { FlipWords } from "@/components/ui/FlipWords";
+import { FlipWords } from "../../components/ui/FlipWords";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
