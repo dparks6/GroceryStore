@@ -7,7 +7,7 @@ const SignUpForm = () => {
         <h2 className='text-xl font-bold mb-10'>Sign Up Start Shopping</h2>
         <div className='flex flex-col items-center'>
             <input className='outline p-2 rounded-xl w-full mb-3'placeholder='Full Name' type="text" required/>
-            <input className='outline p-2 rounded-xl w-full mb-3' placeholder='Email Address' type="text" required/>
+            <input className='outline p-2 rounded-xl w-full mb-3' placeholder='Email Address' type="email" required/>
             <input className='outline p-2 rounded-xl w-full mb-3'placeholder='Username' type ="text" required/>
             <input className='outline p-2 rounded-xl w-full mb-3'placeholder='Password' type='password' required/>
             <input className='outline p-2 rounded-xl w-full mb-5' placeholder='Confirm Password' type="password" required/>
