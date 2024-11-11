@@ -10,7 +10,7 @@ const SignUpForm = () => {
             <input className='outline p-2 rounded-xl w-full mb-3' placeholder='Email Address' type="text" required/>
             <input className='outline p-2 rounded-xl w-full mb-3'placeholder='Username' type ="text" required/>
             <input className='outline p-2 rounded-xl w-full mb-3'placeholder='Password' type='text' required/>
-            <input className='outline p-2 rounded-xl w-full mb-5' placeholder='Confirm Password'type="text" required/>
+            <input className='outline p-2 rounded-xl w-full mb-5' placeholder='Confirm Password' type="password" required/>
 
             <button className='rounded-3xl font-bold bg-emerald-400 w-32 p-2'>Sign Up</button>
         </div>
