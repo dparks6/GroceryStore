@@ -4,7 +4,7 @@ public class Product
   public string name { get; set; }
   public string description { get; set; }
   public double price { get; set; }
-  public string Images { get; set; }
+  public string images { get; set; }
   public string manufacturer { get; set; }
   public string dimensions { get; set; }
   public double weight { get; set; }
