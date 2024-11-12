@@ -25,20 +25,20 @@ public class ProductRepository : IProductRepository
           {
             return new Product
             {
-              ProductID = (int)reader["ProductID"],
-              Name = reader["Name"].ToString(),
-              Description = reader["Description"].ToString(),
-              Price = (double)reader["Price"],
-              Manufacturer = reader["Manufacturer"].ToString(),
-              Dimensions = reader["Dimensions"].ToString(),
-              Weight = (double)reader["Weight"],
-              Rating = (double)reader["Rating"],
+              productID = (int)reader["ProductID"],
+              name = reader["Name"].ToString(),
+              description = reader["Description"].ToString(),
+              price = (double)reader["Price"],
+              manufacturer = reader["Manufacturer"].ToString(),
+              dimensions = reader["Dimensions"].ToString(),
+              weight = (double)reader["Weight"],
+              rating = (double)reader["Rating"],
               SKU = reader["SKU"].ToString(),
-              CategoryID = (int)reader["CategoryID"],
-              Stock = (int)reader["Stock"],
-              Discount = (double)reader["Discount"],
-              DiscountStartDate = (DateTime)reader["DiscountStartDate"],
-              DiscountEndDate = (DateTime)reader["DiscountEndDate"]
+              categoryID = (int)reader["CategoryID"],
+              stock = (int)reader["Stock"],
+              discount = (double)reader["Discount"],
+              discountStartDate = (DateTime)reader["DiscountStartDate"],
+              discountEndDate = (DateTime)reader["DiscountEndDate"]
             }
           }
         }
