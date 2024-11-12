@@ -1,18 +1,18 @@
 public class Product 
 {
-  public int ProductID { get; set; }
-  public string Name { get; set; }
-  public string Description { get; set; }
-  public double Price { get; set; }
+  public int productID { get; set; }
+  public string name { get; set; }
+  public string description { get; set; }
+  public double price { get; set; }
   public string Images { get; set; }
-  public string Manufacturer { get; set; }
-  public string Dimensions { get; set; }
-  public double Weight { get; set; }
-  public double Rating { get; set; }
+  public string manufacturer { get; set; }
+  public string dimensions { get; set; }
+  public double weight { get; set; }
+  public double rating { get; set; }
   public string SKU { get; set; }
-  public int CategoryID { get; set; }
-  public int Stock { get; set; }
-  public double Discount { get; set; }
-  public DateTime DiscountStartDate { get; set; }
-  public DateTime DiscountEndDate { get; set; }
+  public int categoryID { get; set; }
+  public int stock { get; set; }
+  public double discount { get; set; }
+  public DateTime discountStartDate { get; set; }
+  public DateTime discountEndDate { get; set; }
 }
