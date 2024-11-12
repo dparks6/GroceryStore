@@ -51,7 +51,7 @@ public class ProductRepository : IProductRepository
   {
     // TODO
   }
-  
+   
   public void UpdateStock(int productId, int stock)
   {
     // TODO
