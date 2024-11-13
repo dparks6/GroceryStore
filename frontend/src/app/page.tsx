@@ -1,5 +1,12 @@
+import { ProductCards } from "@/components/products/ProductCards";
+
+
 const Home = () => {
-  return <main className="text-blue-500">Hello World!</main>;
+  return (
+    <main className="min-h-screen p-20">
+       <ProductCards />
+    </main>
+  );
 };
 
 export default Home;
