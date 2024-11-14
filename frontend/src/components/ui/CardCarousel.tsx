@@ -22,9 +22,8 @@ interface CarouselProps {
 }
 
 type Card = {
-  src: string;
-  category: string;
-  content: React.ReactNode;
+  image: string;
+  name: string;
 };
 
 export const CarouselContext = createContext<{
@@ -220,9 +219,8 @@ export const Card = ({
               <motion.p
                 className="text-base font-medium text-black dark:text-white"
               >
-                {card.category}
+                {card.name}
               </motion.p>
-              <div className="py-10">{card.content}</div>
             </motion.div>
           </div>
         )}
@@ -234,14 +232,14 @@ export const Card = ({
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
+            layoutId={layout ? `category-${card.name}` : undefined}
             className="text-white text-sm md:text-base font-medium font-sans text-left"
           >
-            {card.category}
+            {card.name}
           </motion.p>
         </div>
         <BlurImage
-          src={card.src}
+          src={card.image}
           alt={"yes"}
           fill
           className="object-cover absolute z-10 inset-0"
