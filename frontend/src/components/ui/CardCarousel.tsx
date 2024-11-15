@@ -100,12 +100,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             )}
           ></div>
 
-          <div
-            className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
-            )}
-          >
+          <div className={cn("flex flex-row justify-start gap-4 pl-4")}>
             {items.map((item, index) => (
               <motion.div
                 initial={{
@@ -216,9 +211,7 @@ export const Card = ({
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
-              <motion.p
-                className="text-base font-medium text-black dark:text-white"
-              >
+              <motion.p className="text-base font-medium text-black dark:text-white">
                 {card.name}
               </motion.p>
             </motion.div>
@@ -227,7 +220,7 @@ export const Card = ({
       </AnimatePresence>
       <motion.button
         onClick={handleOpen}
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[20rem] md:w-[20rem] overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[15rem] md:w-[15rem] overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
         <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
