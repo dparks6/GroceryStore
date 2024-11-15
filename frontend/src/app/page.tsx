@@ -1,5 +1,7 @@
+import Navbar from "./navbar/Navbar";
+
 const Home = () => {
-  return <main className="text-blue-500">Hello World!</main>;
+  return <main ><Navbar/></main>;
 };
 
 export default Home;
