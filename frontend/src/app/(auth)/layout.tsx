@@ -2,7 +2,7 @@ import { FlipWords } from "../../components/ui/FlipWords";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="flex flex-row">
+    <main className="flex flex-row bg-white">
       <section className="flex w-1/2">
         {children}
       </section>
