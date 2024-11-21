@@ -1,26 +1,7 @@
 const Footer = () => {
   return (
     <footer className="bg-inherit">
-        {/* <div className="flex flex-row justify-evenly text-sm text-zinc-500 p-1">
-            <p>About</p>
-            <p>Terms of Service</p>
-            <p>Contact Us</p>          
-            <p>Careers</p>
-            <p>Advertising</p>
-            <p>Privacy Policy</p>
-            <p>Cookie Policy</p>
-            <p>Help Center</p>
-            <p>© 2024 ShopQuik Corp.</p>  
-        </div> */}
-      {/* <div className="p-">
-          <a href="">About</a>
-          <a href="">Terms of Service</a>
-          <a href="">Contact Us</a>
-          <a href="">Careers</a>
-          <a href="">Support</a>
-          <a href="">Privacy Policy</a>
-      </div> */}
-  <div className="max-w-full mx-auto mx-5">
+  <div className="max-w-full mx-auto">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12 border-b border-gray-700">
       {/* Logo and About */}
       <div>
