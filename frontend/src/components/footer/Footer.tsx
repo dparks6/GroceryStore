@@ -1,13 +1,13 @@
 const Footer = () => {
   return (
     <footer className="bg-inherit">
-  <div className="max-w-full mx-auto">
+  <div className="max-w-full mx-7">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 py-12 border-b border-gray-700">
       {/* Logo and About */}
       <div>
         <h3 className="text-lg font-semibold mb-4">ShopQuik</h3>
         <p className="text-sm text-green-900">
-          Delivering quality food and innovative solutions for a better diet!
+          Delivering quality food and innovative solutions for a better diet since 1936.
         </p>
       </div>
       
