@@ -6,7 +6,8 @@ import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   return (
-    <div className='flex flex-row outline outline-1 py-4 font-bold'>
+    <div className='flex flex-row justify-between items-center outline outline-1 py-4 font-bold bg-white'>
+      <div className='flex flex-row'>
         <Link href="/" className='px-5 mr-10'>
           <span>Shop</span>
           <span className='text-emerald-400'>Quick</span>
@@ -17,6 +18,8 @@ const Navbar = () => {
             <input className=' outline outline-1 rounded-xl w-full pl-1' type="text" placeholder='  Search...'></input>
           </div>
         </div>
+      </div>
+      <div className='flex flex-row'>
         <Link href="/cart" className='flex flex-col items-center'>
           <FaShoppingCart/>
           <span className='text-bold px-30'>Cart</span>
@@ -25,6 +28,7 @@ const Navbar = () => {
           <CgProfile />
           <span className='text-bold'>Profile</span>
         </Link>
+        </div>
     </div>
   )
 }
