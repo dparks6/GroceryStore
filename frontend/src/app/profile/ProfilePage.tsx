@@ -8,7 +8,7 @@ const ProfilePage = () => {
     <form className='bg-white outline p-5 w-[30rem] h-full flex flex-col rounded-xl'>
       <div className='flex flex-col items-center w-full'>
       <h1 className='absolute left-28'><Link href="/" className="text-blue-500 font-bold">Back to Shopping</Link></h1>
-        <h1 className='mt-10 text-2xl font-bold mb-2'>Welcome<FlipWords words={["Loyal", "Valued", "Home"]}/>Customer</h1>
+        <h1 className='mt-10 text-2xl font-bold mb-2'>Welcome<FlipWords words={["Loyal", "Valued", "Home" ]}/>Customer</h1>
       </div>
         <div className='flex flex-col items-center'>
           <div className='mr-7'>

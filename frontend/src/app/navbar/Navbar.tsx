@@ -17,7 +17,7 @@ const Navbar = () => {
             <input className=' outline outline-1 rounded-xl w-full pl-1' type="text" placeholder='  Search...'></input>
           </div>
         </div>
-        <Link href="/cart" className='flex flex-col items-center'>
+        <Link href="/checkout" className='flex flex-col items-center'>
           <FaShoppingCart/>
           <span className='text-bold px-30'>Cart</span>
         </Link>
