@@ -16,7 +16,7 @@ export function ProductCards({ title }: ProductCardsProps) {
   ));
 
   return (
-    <div className="w-full h-full bg-white p-4 pt-6 flex flex-col">
+    <div className="w-full h-full bg-white p-4 pt-6 flex flex-col shadow-md">
       <h2 className="pl-4 text-xl md:text-3xl font-bold text-neutral-800 font-sans">
         {title}
       </h2>

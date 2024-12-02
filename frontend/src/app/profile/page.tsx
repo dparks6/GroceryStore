@@ -1,7 +1,6 @@
 import React from "react";
 import ProfilePage from "./ProfilePage";
-import Navbar from "../navbar/Navbar";
-
+import Navbar from "../../components/header/Navbar";
 
 const Profile = () => {
   return (
@@ -9,9 +8,9 @@ const Profile = () => {
       <Navbar />
       <section className="p-20">
         <div className="flex flex-col justify-center"></div>
-        <ProfilePage/>
-        </section>
-        </main>
+        <ProfilePage />
+      </section>
+    </main>
   );
 };
 
