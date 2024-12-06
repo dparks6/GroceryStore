@@ -1,8 +1,18 @@
+"use client"
 import { FlipWords } from '@/components/ui/FlipWords'
 import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const ProfilePage = () => {
+  const UserAuth = false;
+  const router = useRouter();
+
+  if (!UserAuth) {
+    router.push("/login");
+  }
+
+
   var fullname = 'Loading...';
   var email = 'Loading...';
   var number = 'Loading...';
