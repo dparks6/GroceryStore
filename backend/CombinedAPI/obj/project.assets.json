@@ -2342,19 +2342,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/morenzo/.nuget/packages/": {}
+    "/Users/josechacon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/morenzo/GroceryStore/backend/CombinedAPI/CombinedAPI.csproj",
+      "projectUniqueName": "/Users/josechacon/School/SoftEng/GroceryStore/backend/CombinedAPI/CombinedAPI.csproj",
       "projectName": "CombinedAPI",
-      "projectPath": "/Users/morenzo/GroceryStore/backend/CombinedAPI/CombinedAPI.csproj",
-      "packagesPath": "/Users/morenzo/.nuget/packages/",
-      "outputPath": "/Users/morenzo/GroceryStore/backend/CombinedAPI/obj/",
+      "projectPath": "/Users/josechacon/School/SoftEng/GroceryStore/backend/CombinedAPI/CombinedAPI.csproj",
+      "packagesPath": "/Users/josechacon/.nuget/packages/",
+      "outputPath": "/Users/josechacon/School/SoftEng/GroceryStore/backend/CombinedAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/morenzo/.nuget/NuGet/NuGet.Config"
+        "/Users/josechacon/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
