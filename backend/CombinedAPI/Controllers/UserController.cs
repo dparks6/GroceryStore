@@ -16,6 +16,27 @@ namespace CombinedAPI.Controllers
         {
             _userAccessor = userAccessor;
         }
+        
+        // GET: api/user
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            try
+            {
+                Console.WriteLine("Fetching all users");
+                var user = _userAccessor.GetAllUsers();
+                if (user == null || !user.Any())
+                {
+                    return NotFound("User not Found");
+                }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+        }
 
         // GET: api/user/id/{id}
         [HttpGet("id/{id}")]
