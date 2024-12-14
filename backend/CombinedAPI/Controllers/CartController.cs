@@ -20,8 +20,8 @@ namespace CombinedAPI.Controllers
             _cartManager = cartManager;
         }
 
-        // GET: api/product/{cartId}
-        [HttpGet("{cartId}")]
+        // GET: api/cart/{cartId}
+        [HttpGet("cart/{cartId}")]
         public IActionResult getUserCart(int cartId)
         {
             Console.WriteLine($"Getting Cart by ID : {cartId}");
@@ -33,10 +33,8 @@ namespace CombinedAPI.Controllers
             return Ok(cart);
         }
 
-        // GET: api/cart/cartId
-        // GET: api/product
-        // GET: api/cart/amount
-        [HttpGet("{cartId}/{product}/{amount}")]
+        // GET: api/cart/cartId/product/amount
+        [HttpGet("/cart/{cartId}/{product}/{amount}")]
         public IActionResult addToCart(int cartId, Product product, int amount)
         {
             bool success = _cartManager.addToCart(cartId, product, amount);
@@ -49,7 +47,7 @@ namespace CombinedAPI.Controllers
 
         // GET: api/cart/cartId
         // GET: api/product
-        [HttpGet("{cartId}/{product}")]
+        [HttpGet("cart/{cartId}/{product}")]
         public IActionResult removeFromCart(int cartId, Product product)
         {
             bool success = _cartManager.removeFromCart(cartId, product);
@@ -63,7 +61,7 @@ namespace CombinedAPI.Controllers
         // GET: api/cart/cartId
         // GET: api/product
         // GET: api/cart/amount
-        [HttpGet("{cartId}/{product}/{amount}")]
+        [HttpGet("cart/{cartId}/{product}/{amount}")]
         public IActionResult updateAmount(int cartId, Product product, int amount)
         {
             bool success = _cartManager.updateAmount(cartId, product, amount);
@@ -75,7 +73,7 @@ namespace CombinedAPI.Controllers
         }
 
         // GET: api/cart
-        [HttpGet("{cart}")]
+        [HttpGet("cart/{cart}")]
         public IActionResult initiateCart(Cart cart)
         {
             bool success = _cartManager.initiateCart(cart);
@@ -86,8 +84,8 @@ namespace CombinedAPI.Controllers
             return Ok(success);
         }
 
-        // GET: api/cart/cartId
-        [HttpGet("{cartId}")]
+        // GET: api/cart/clear/cartId
+        [HttpGet("cart/clear/{cartId}")]
         public IActionResult clearCart(int cartId)
         {
             bool success = _cartManager.clearCart(cartId);
