@@ -13,6 +13,41 @@ namespace CombinedAPI.Repositories
             _connectionString = connectionString;
         }
 
+        public List<User> GetAllUsers()
+        {
+            var users = new List<User>();
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var query = "SELECT * FROM Users";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new User
+                            {
+                                userID = (int)reader["UserID"],
+                                username = reader["Username"].ToString(),
+                                firstName = reader["FirstName"].ToString(),
+                                lastName = reader["LastName"].ToString(),
+                                address = reader["Address"].ToString(),
+                                email = reader["Email"].ToString(),
+                                phoneNumber = reader["PhoneNumber"].ToString(),
+                                password = reader["Password"].ToString(),
+                                creditcardNumber = reader["CreditCardNumber"].ToString(),
+                                creditcardExpDate = reader["CreditCardExpDate"].ToString(),
+                                cvv = (int)reader["CVV"],
+                                shippingLocation = reader["ShippingLocation"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return users;
+        }
+
         public User GetUserById(int id)
         {
             using (var connection = new SqlConnection(_connectionString))

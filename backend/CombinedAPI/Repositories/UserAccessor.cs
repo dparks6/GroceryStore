@@ -12,6 +12,11 @@ namespace CombinedAPI.Repositories
           _userRepository = userRepository;
       }
 
+      public List<User> GetAllUsers()
+      {
+        return _userRepository.GetAllUsers();
+      }
+
       public User GetUserById(int userId)
       {
           return _userRepository.GetUserById(userId);
