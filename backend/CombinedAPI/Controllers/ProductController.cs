@@ -36,21 +36,13 @@ namespace CombinedAPI.Controllers
     [HttpGet("name/{name}")]
     public IActionResult GetProductByName(string name) 
     {
-        try
-        {
-            Console.WriteLine($"Getting product by Name: {name}");
-            var product = _productManager.GetProductByName(name);
-            if (product == null)
-            {
-                return NotFound("Product not found.");
-            }
-            return Ok(product);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error occurred: {ex.Message}");
-            return StatusCode(500, "An error occurred while processing your request.");
-        }
+      Console.WriteLine($"Getting product by Name: {name}");
+      var product = _productManager.GetProductByName(name);
+      if (product == null)
+      {
+        return NotFound("Product not found.");
+      }
+      return Ok(product);
     }
 
     // GET: api/product/category/{id}
@@ -59,6 +51,10 @@ namespace CombinedAPI.Controllers
     {
       Console.WriteLine($"Getting product by Category: {id}");
       var products = _productManager.GetProductByCategory(id);
+      if (products == null)
+      {
+        return NotFound("Product in this category not found.");
+      }
       return Ok(products);
     }
     
@@ -67,6 +63,10 @@ namespace CombinedAPI.Controllers
     public IActionResult GetAllProducts()
     {
       var products = _productManager.GetAllProducts();
+      if (products == null)
+      {
+        return NotFound("No Products found.");
+      }
       return Ok(products);
     }
 
@@ -74,7 +74,8 @@ namespace CombinedAPI.Controllers
     [HttpPut("update-stock")]
     public IActionResult UpdateProductStock([FromBody] UpdateStockRequest request)
     {
-      var success = _productManager.UpdateProductStock(request.ProductId, request.Stock);
+      Console.WriteLine($"Updating product stock for productID: {request.productId}");
+      var success = _productManager.UpdateProductStock(request.productId, request.stock);
       if (!success)
       {
         return BadRequest("Failed to update stock.");
@@ -86,8 +87,8 @@ namespace CombinedAPI.Controllers
   // Request models for updating stock and discount
   public class UpdateStockRequest
   {
-    public int ProductId { get; set; }
-    public int Stock { get; set; }
+    public int productId { get; set; }
+    public int stock { get; set; }
   }
 
 }

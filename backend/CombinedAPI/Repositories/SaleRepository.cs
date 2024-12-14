@@ -8,117 +8,117 @@ using Microsoft.Data.SqlClient;
 namespace CombinedAPI.Repositories
 {
 
-    public class SaleRepository : ISaleRepository
+  public class SaleRepository : ISaleRepository
+  {
+    private string _connectionString;
+    public SaleRepository(string connectionString)
     {
-      private string _connectionString;
-      public SaleRepository(string connectionString)
-      {
-          _connectionString = connectionString;
-      }
+      _connectionString = connectionString;
+    }
 
-      // Get sale by ID
-      public Sale GetSaleById(int saleId)
+    // Get sale by ID
+    public Sale GetSaleById(int saleId)
+    {
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        connection.Open();
+
+        string query = "SELECT * FROM Sales WHERE SaleID = @SaleID";
+        using (SqlCommand cmd = new SqlCommand(query, connection))
         {
-          connection.Open();
+          cmd.Parameters.AddWithValue("@SaleID", saleId);
 
-          string query = "SELECT * FROM Sales WHERE SaleID = @SaleID";
-          using (SqlCommand cmd = new SqlCommand(query, connection))
+          using (SqlDataReader reader = cmd.ExecuteReader())
           {
-            cmd.Parameters.AddWithValue("@SaleID", saleId);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            if (reader.Read())
             {
-              if (reader.Read())
+              return new Sale
               {
-                return new Sale
-                {
-                  SaleID = reader.GetInt32(reader.GetOrdinal("SaleID")),
-                        startDate = reader.GetDateTime(reader.GetOrdinal("startDate")),
-                        endDate = reader.GetDateTime(reader.GetOrdinal("endDate")),
-                        IsPercentage = reader.GetBoolean(reader.GetOrdinal("IsPercentage")),
-                        DiscountAmount = reader.IsDBNull(reader.GetOrdinal("DiscountAmount"))? 0 : Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("DiscountAmount")))
-                };
-              }
+                SaleID = reader.GetInt32(reader.GetOrdinal("SaleID")),
+                startDate = reader.GetDateTime(reader.GetOrdinal("startDate")),
+                endDate = reader.GetDateTime(reader.GetOrdinal("endDate")),
+                IsPercentage = reader.GetBoolean(reader.GetOrdinal("IsPercentage")),
+                DiscountAmount = reader.IsDBNull(reader.GetOrdinal("DiscountAmount")) ? 0 : Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("DiscountAmount")))
+              };
             }
           }
         }
-        throw new InvalidOperationException($"No sale found with ID {saleId}.");
       }
+      return null;
+    }
 
-        // Get all sales
-      public List<Sale> GetAllSales()
+    // Get all sales
+    public List<Sale> GetAllSales()
+    {
+      List<Sale> sales = new List<Sale>();
+
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
-        List<Sale> sales = new List<Sale>();
+        connection.Open();
 
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        string query = "SELECT * FROM Sales";
+        using (SqlCommand cmd = new SqlCommand(query, connection))
         {
-          connection.Open();
-
-          string query = "SELECT * FROM Sales";
-          using (SqlCommand cmd = new SqlCommand(query, connection))
+          using (SqlDataReader reader = cmd.ExecuteReader())
           {
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            while (reader.Read())
             {
-              while (reader.Read())
+              sales.Add(new Sale
               {
-                sales.Add(new Sale
-                    {
-                        SaleID = reader.GetInt32(reader.GetOrdinal("SaleID")),
-                        startDate = reader.GetDateTime(reader.GetOrdinal("startDate")),
-                        endDate = reader.GetDateTime(reader.GetOrdinal("endDate")),
-                        IsPercentage = reader.GetBoolean(reader.GetOrdinal("IsPercentage")),
-                        DiscountAmount = reader.IsDBNull(reader.GetOrdinal("DiscountAmount"))? 0 : Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("DiscountAmount")))
-                    });
-              }
+                SaleID = reader.GetInt32(reader.GetOrdinal("SaleID")),
+                startDate = reader.GetDateTime(reader.GetOrdinal("startDate")),
+                endDate = reader.GetDateTime(reader.GetOrdinal("endDate")),
+                IsPercentage = reader.GetBoolean(reader.GetOrdinal("IsPercentage")),
+                DiscountAmount = reader.IsDBNull(reader.GetOrdinal("DiscountAmount")) ? 0 : Convert.ToDouble(reader.GetDecimal(reader.GetOrdinal("DiscountAmount")))
+              });
             }
           }
         }
-        return sales;
       }
+      return sales;
+    }
 
-        // Add a new sale
-      public bool AddSale(Sale sale)
+    // Add a new sale
+    public bool AddSale(Sale sale)
+    {
+      using (SqlConnection connection = new SqlConnection(_connectionString))
       {
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        connection.Open();
+
+        string query = "INSERT INTO Sales (startDate, endDate, IsPercentage, DiscountAmount) VALUES (@startDate, @endDate, @IsPercentage, @DiscountAmount)";
+        using (SqlCommand cmd = new SqlCommand(query, connection))
         {
-          connection.Open();
+          cmd.Parameters.AddWithValue("@startDate", sale.startDate);
+          cmd.Parameters.AddWithValue("@endDate", sale.endDate);
+          cmd.Parameters.AddWithValue("@IsPercentage", sale.IsPercentage);
+          cmd.Parameters.AddWithValue("@DiscountAmount", sale.DiscountAmount);
 
-          string query = "INSERT INTO Sales (startDate, endDate, IsPercentage, DiscountAmount) VALUES (@startDate, @endDate, @IsPercentage, @DiscountAmount)";
-          using (SqlCommand cmd = new SqlCommand(query, connection))
-          {
-            cmd.Parameters.AddWithValue("@startDate", sale.startDate);
-            cmd.Parameters.AddWithValue("@endDate", sale.endDate);
-            cmd.Parameters.AddWithValue("@IsPercentage", sale.IsPercentage);
-            cmd.Parameters.AddWithValue("@DiscountAmount", sale.DiscountAmount);
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-            return rowsAffected > 0;
-          }
-        }
-      }
-
-      // Update an existing sale
-      public bool UpdateSale(Sale sale)
-      {
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-          connection.Open();
-
-          string query = "UPDATE Sales SET startDate = @startDate, endDate = @endDate, IsPercentage = @IsPercentage, DiscountAmount = @DiscountAmount WHERE SaleID = @SaleID";
-          using (SqlCommand cmd = new SqlCommand(query, connection))
-          {
-              cmd.Parameters.AddWithValue("@SaleID", sale.SaleID);
-              cmd.Parameters.AddWithValue("@startDate", sale.startDate);
-              cmd.Parameters.AddWithValue("@endDate", sale.endDate);
-              cmd.Parameters.AddWithValue("@IsPercentage", sale.IsPercentage);
-              cmd.Parameters.AddWithValue("@DiscountAmount", sale.DiscountAmount);
-
-              int rowsAffected = cmd.ExecuteNonQuery();
-              return rowsAffected > 0;
-          }
+          int rowsAffected = cmd.ExecuteNonQuery();
+          return rowsAffected > 0;
         }
       }
     }
+
+    // Update an existing sale
+    public bool UpdateSale(Sale sale)
+    {
+      using (SqlConnection connection = new SqlConnection(_connectionString))
+      {
+        connection.Open();
+
+        string query = "UPDATE Sales SET startDate = @startDate, endDate = @endDate, IsPercentage = @IsPercentage, DiscountAmount = @DiscountAmount WHERE SaleID = @SaleID";
+        using (SqlCommand cmd = new SqlCommand(query, connection))
+        {
+          cmd.Parameters.AddWithValue("@SaleID", sale.SaleID);
+          cmd.Parameters.AddWithValue("@startDate", sale.startDate);
+          cmd.Parameters.AddWithValue("@endDate", sale.endDate);
+          cmd.Parameters.AddWithValue("@IsPercentage", sale.IsPercentage);
+          cmd.Parameters.AddWithValue("@DiscountAmount", sale.DiscountAmount);
+
+          int rowsAffected = cmd.ExecuteNonQuery();
+          return rowsAffected > 0;
+        }
+      }
+    }
+  }
 }

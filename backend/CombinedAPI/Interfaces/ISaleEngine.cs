@@ -2,7 +2,7 @@ using CombinedAPI.Models;
 
 namespace CombinedAPI.Interfaces
 {
-  public interface ISaleEngine 
+  public interface ISaleEngine
   {
     Sale GetSaleById(int saleId);
     List<Sale> GetAllSales();

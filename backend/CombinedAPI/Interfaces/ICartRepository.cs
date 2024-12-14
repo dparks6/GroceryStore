@@ -2,13 +2,13 @@ using CombinedAPI.Models;
 
 namespace CombinedAPI.Interfaces
 {
-    public interface ICartRepository
-    {
-        Cart getUserCart(int cartId);
-        bool addToCart(int cartId, Product product, int amount);
-        bool removeFromCart(int cartId, Product product);
-        bool updateAmount(int cartId, Product product, int amount);
-        bool initiateCart(Cart cart);
-        bool clearCart(int cartId);
-    }
+  public interface ICartRepository
+  {
+    Cart getUserCart(int cartId);
+    bool addToCart(int cartId, Product product, int amount);
+    bool removeFromCart(int cartId, Product product);
+    bool updateAmount(int cartId, Product product, int amount);
+    bool initiateCart(Cart cart);
+    bool clearCart(int cartId);
+  }
 }

@@ -10,19 +10,14 @@ namespace CombinedAPI.Services
   {
     private readonly ISaleRepository _repository;
 
-    public SaleEngine(ISaleRepository repository) 
+    public SaleEngine(ISaleRepository repository)
     {
       _repository = repository;
     }
 
     // Get sale by ID + validation 
-    public Sale GetSaleById(int saleId) 
+    public Sale GetSaleById(int saleId)
     {
-      if (saleId <= 0)
-      {
-        throw new ArgumentException("Sale ID must be greater than zero.", nameof(saleId));
-      }
-
       return _repository.GetSaleById(saleId);
     }
 
@@ -37,25 +32,20 @@ namespace CombinedAPI.Services
     {
       ValidateSaleDates(sale.startDate, sale.endDate);
 
-      if (sale.DiscountAmount <= 0)
-      {
-        throw new ArgumentException("Discount amount must be greater than zero.", nameof(sale.DiscountAmount));
-      }
-
       return _repository.AddSale(sale);
     }
 
     // Update existing sale + validation 
     public bool UpdateSale(Sale sale)
     {
-      if (sale.SaleID <= 0 ) 
+      if (sale.SaleID <= 0)
       {
         throw new ArgumentException("Sale ID must be greater than zero.", nameof(sale.SaleID));
       }
 
       ValidateSaleDates(sale.startDate, sale.endDate);
 
-      if (sale.DiscountAmount <= 0) 
+      if (sale.DiscountAmount <= 0)
       {
         throw new ArgumentException("Discount amount must be greater than zero.", nameof(sale.DiscountAmount));
       }
@@ -64,7 +54,7 @@ namespace CombinedAPI.Services
     }
 
     // helper to validate start and end date 
-    private void ValidateSaleDates(DateTime startDate, DateTime endDate) 
+    private void ValidateSaleDates(DateTime startDate, DateTime endDate)
     {
       if (endDate < startDate)
       {
