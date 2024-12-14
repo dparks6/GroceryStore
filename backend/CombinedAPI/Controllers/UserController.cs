@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using CombinedAPI.Models;
 using CombinedAPI.Repositories;
+using CombinedAPI.Interfaces;
 
 namespace CombinedAPI.Controllers
 {
@@ -9,11 +10,11 @@ namespace CombinedAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserAccessor _userAccessor;
 
-        public UserController(UserRepository userRepository)
+        public UserController(IUserAccessor userAccessor)
         {
-            _userRepository = userRepository;
+            _userAccessor = userAccessor;
         }
 
         // GET: api/user/id/{id}
@@ -23,7 +24,7 @@ namespace CombinedAPI.Controllers
             try
             {
                 Console.WriteLine($"Getting user by ID: {id}");
-                var user = _userRepository.GetUserById(id);
+                var user = _userAccessor.GetUserById(id);
                 if (user == null)
                 {
                     return NotFound("User not found.");
@@ -37,14 +38,14 @@ namespace CombinedAPI.Controllers
             }
         }
 
-        // POST: api/user
-        [HttpPost]
+        // POST: api/user/create
+        [HttpPost("create")]
         public IActionResult CreateUser([FromBody] User user)
         {
             try
             {
                 Console.WriteLine("Creating new user");
-                var success = _userRepository.CreateUser(user);
+                var success = _userAccessor.CreateUser(user);
                 if (!success)
                 {
                     return BadRequest("Failed to create user.");
@@ -65,7 +66,7 @@ namespace CombinedAPI.Controllers
             try
             {
                 Console.WriteLine($"Updating user with ID: {id}");
-                var success = _userRepository.UpdateUser(id, user);
+                var success = _userAccessor.UpdateUser(id, user);
                 if (!success)
                 {
                     return NotFound("User not found or failed to update.");
@@ -79,14 +80,14 @@ namespace CombinedAPI.Controllers
             }
         }
 
-        // DELETE: api/user/{id}
-        [HttpDelete("{id}")]
+        // DELETE: api/user/delete/{id}
+        [HttpDelete("delete/{id}")]
         public IActionResult DeleteUser(int id)
         {
             try
             {
                 Console.WriteLine($"Deleting user with ID: {id}");
-                var success = _userRepository.DeleteUser(id);
+                var success = _userAccessor.DeleteUser(id);
                 if (!success)
                 {
                     return NotFound("User not found or failed to delete.");

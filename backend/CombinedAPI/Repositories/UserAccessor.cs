@@ -17,22 +17,19 @@ namespace CombinedAPI.Repositories
           return _userRepository.GetUserById(userId);
       }
 
-      public void CreateUser(User user)
+      public bool CreateUser(User user)
       {
-          _userRepository.CreateUser(user);
-          return;
+          return _userRepository.CreateUser(user);
       }
 
-      public void UpdateUser(int id, User user)
+      public bool UpdateUser(int id, User user)
       {
-          _userRepository.UpdateUser(id, user);
-          return;
+          return _userRepository.UpdateUser(id, user);
       }
 
-      public void DeleteUser(int id)
+      public bool DeleteUser(int id)
       {
-          _userRepository.DeleteUser(id);
-          return;
+          return _userRepository.DeleteUser(id);
       }
   }
 }
