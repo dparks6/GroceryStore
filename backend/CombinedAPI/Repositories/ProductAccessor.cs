@@ -21,7 +21,7 @@ namespace CombinedAPI.Repositories
       return _productRepository.GetProductByName(Name);
     }
 
-    public List<Product>GetProductByCategory(int categoryId)
+    public List<Product> GetProductByCategory(int categoryId)
     {
       return _productRepository.GetProductByCategory(categoryId);
     }

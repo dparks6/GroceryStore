@@ -15,21 +15,11 @@ namespace CombinedAPI.Services
 
     public Product GetProductById(int productId)
     {
-      var product = _productAccessor.GetProductById(productId);
-      if (product == null)
-      {
-        throw new ArgumentException($"No product found with ID {productId}");
-      }
-      return product;
+      return _productAccessor.GetProductById(productId);
     }
     public Product GetProductByName(string Name)
     {
-      var product = _productAccessor.GetProductByName(Name);
-      if (product == null)
-      {
-        throw new ArgumentException($"No product found with Name {Name}");
-      }
-      return product;
+      return _productAccessor.GetProductByName(Name);
     }
     public List<Product> GetProductByCategory(int categoryId)
     {
@@ -47,7 +37,6 @@ namespace CombinedAPI.Services
       {
         throw new ArgumentException("Stock cannot be negative.");
       }
-
       return _productAccessor.UpdateProductStock(productId, stock);
     }
   }

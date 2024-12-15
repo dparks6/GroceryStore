@@ -11,5 +11,6 @@ namespace CombinedAPI.Interfaces
       bool DeleteUser(int id);
       public User GetUserById(int id);
       List<User> GetAllUsers();
+      bool AuthenticateUser(string username, string password);
   }
 }

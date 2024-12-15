@@ -9,5 +9,6 @@ namespace CombinedAPI.Interfaces
       bool UpdateUser(int id, User user);
       bool DeleteUser(int id);
       bool CreateUser(User user);
+      bool AuthenticateUser(string username, string password);
   }
 }
