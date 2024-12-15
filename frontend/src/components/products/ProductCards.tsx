@@ -13,7 +13,7 @@ const ProductCards = async () => {
   const sections = [
     { title: "Fresh Produce", products: responseFreshProduce, id: 1 },
     { title: "Dairy", products: responseDairy, id: 2 },
-    { title: "Deli", products: responseDeli, id: 2 },
+    { title: "Deli", products: responseDeli, id: 3 },
   ];
 
   return (
